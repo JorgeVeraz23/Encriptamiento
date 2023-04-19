@@ -1,16 +1,70 @@
-# This is a sample Python script.
+#archivo = open('texto.txt', 'a')
+#archivo.write('Prueba de guardado en el archivo')
+#archivo.close()
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#archivo = open('texto.txt', 'r')
+#print(archivo.read())
+
+def encriptar(texto):
+    print("El texto a encriptar es: "+texto)
+    textoFinal = ''
+    for letra in texto:
+        asci = ord(letra)
+        asci += 1
+        textoFinal += chr(asci)
+    return textoFinal
+def desencriptar(texto):
+    print("El texto a desencriptar es: "+texto)
+    textoFinal = ''
+    for letra in texto:
+        asci = ord(letra)
+        asci -= 1
+        textoFinal += chr(asci)
+    return textoFinal
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#encriptar('Prueba')
+#desencriptar('Pxrxuxexbxax')
+
+def encriptarArchivo(rutaArchivo):
+    archivo = open(rutaArchivo, 'r')
+    texto = archivo.read()
+    archivo.close()
+    textoEncriptado = encriptar(texto)
+
+    archivo = open(rutaArchivo, 'w')
+    archivo.write(textoEncriptado)
+    archivo.close()
+    print("El archivo se encripto correctamente")
+
+def desencriptarArchivo(rutaArchivo):
+    archivo = open(rutaArchivo, 'r')
+    texto = archivo.read()
+    archivo.close()
+    textoDesencriptado = desencriptar(texto)
+
+    archivo = open(rutaArchivo, 'w')
+    archivo.write(textoDesencriptado)
+    archivo.close()
+    print("El archivo se desencripto correctamente")
+
+respuestaEncriptar = input('Presione "E" para encriptar, o "D" para desencriptar')
+rutaArchivo = input('Ingrese la ruta del archivo')
+
+if respuestaEncriptar == 'E':
+    encriptarArchivo(rutaArchivo)
+else:
+    desencriptarArchivo(rutaArchivo)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+#encriptarArchivo()
+#desencriptarArchivo()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#encriptarArchivo()
+
+#archivo = open('texto.txt', 'a')
+#archivo.write('Prueba de guardado en el archivo')
+#archivo.close()
+
+#archivo = open('texto.txt', 'r')
+#print(archivo.read())
